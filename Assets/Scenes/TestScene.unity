@@ -152,7 +152,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00001120386}
+  m_AnchoredPosition: {x: 0, y: 0.000013608361}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &29246043
@@ -281,6 +281,7 @@ GameObject:
   m_Component:
   - component: {fileID: 77448669}
   - component: {fileID: 77448672}
+  - component: {fileID: 77448673}
   - component: {fileID: 77448671}
   m_Layer: 5
   m_Name: Vending Machine
@@ -348,6 +349,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77448668}
   m_CullTransparentMesh: 1
+--- !u!114 &77448673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77448668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d34c33b87c781c4a936a516555288ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MachineUiMgr
+  inventory: {fileID: 0}
+  productListObj: {fileID: 1423833241}
+  VendingMachineItemBtn: {fileID: 3615630716402665080, guid: 56e4807b6286835448cb24d73eaa5428, type: 3}
 --- !u!1 &195008950
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +446,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 195008953}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1923354449}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: AddMoney1000
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &195008953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1914,7 +1942,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1871720722}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9979809
+  m_Size: 0.9020961
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2347,7 +2375,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1222664054}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99870336
+  m_Size: 0.9371226
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2472,7 +2500,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 965341996}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1923354449}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
+        m_MethodName: AddMoney100
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &965341996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2521,6 +2561,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1066057678}
   - component: {fileID: 1066057677}
+  - component: {fileID: 1066057679}
+  - component: {fileID: 1066057680}
   m_Layer: 0
   m_Name: DataMgr
   m_TagString: Untagged
@@ -2540,7 +2582,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 127f9de32c8421043bdf400532ab3192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DataParsingMgr
-  machineState: {fileID: 1989415571}
+  machineState: {fileID: 1066057679}
+  machineUiMgr: {fileID: 77448673}
+  productImageMgr: {fileID: 1066057680}
+  inventory: {fileID: 1923354449}
 --- !u!4 &1066057678
 Transform:
   m_ObjectHideFlags: 0
@@ -2556,6 +2601,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1066057679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066057676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7024f1793ea194c9be1733b3347315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MachineState
+  MachineIdText: {fileID: 1598112937}
+  PowerLight: {fileID: 489584494}
+--- !u!114 &1066057680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066057676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ee961e3fab1274db2e778fff2ab205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProductImageMgr
 --- !u!1 &1222664053
 GameObject:
   m_ObjectHideFlags: 0
@@ -2730,6 +2801,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1423833242}
+  - component: {fileID: 1423833243}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -2756,6 +2828,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &1423833243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423833241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GridLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 500, y: 150}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &1455628456
 GameObject:
   m_ObjectHideFlags: 0
@@ -3304,7 +3400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000025747398}
+  m_AnchoredPosition: {x: 0, y: -0.00003979738}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1796123739
@@ -3452,6 +3548,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1923354448}
+  - component: {fileID: 1923354449}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -3479,52 +3576,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1989415569
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1989415570}
-  - component: {fileID: 1989415571}
-  m_Layer: 0
-  m_Name: Machine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1989415570
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989415569}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1989415571
+--- !u!114 &1923354449
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989415569}
+  m_GameObject: {fileID: 1923354447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c7024f1793ea194c9be1733b3347315, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e431664bb01aad4ebc739b715f9a31a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MachineState
-  MachineIdText: {fileID: 1598112937}
-  PowerLight: {fileID: 489584494}
+  m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  moneyText: {fileID: 408399413}
 --- !u!1 &2129156592
 GameObject:
   m_ObjectHideFlags: 0
@@ -3803,5 +3867,4 @@ SceneRoots:
   - {fileID: 2129156596}
   - {fileID: 275549951}
   - {fileID: 792641756}
-  - {fileID: 1989415570}
   - {fileID: 1066057678}

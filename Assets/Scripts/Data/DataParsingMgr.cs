@@ -9,6 +9,15 @@ public class DataParsingMgr : MonoBehaviour
     [SerializeField]
     MachineState machineState;
 
+    [SerializeField]
+    MachineUiMgr machineUiMgr;
+
+    [SerializeField]
+    ProductImageMgr productImageMgr;
+
+    [SerializeField]
+    Inventory inventory;
+
     const string ItemsResourcePath = "Items";
 
     public string MachineId { get; private set; }
@@ -19,7 +28,10 @@ public class DataParsingMgr : MonoBehaviour
     {
         ParseItems();
 
+        productImageMgr?.LoadProductImages(Products);
         machineState.SetMachineState(MachineId, Status, Products);
+        productImageMgr.LoadProductImages(Products);
+        machineUiMgr?.SetProductListBtn(Products, productImageMgr.ProductImages, inventory);
     }
 
     public void ParseItems()
