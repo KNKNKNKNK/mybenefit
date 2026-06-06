@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using MachineData;
 using ItemData;
+using LogData;
 
 public class MachineState : MonoBehaviour
 {
@@ -14,8 +15,10 @@ public class MachineState : MonoBehaviour
     Image PowerLight;
 
     string MachineId = "";
-    MachineStatus Status;
     Dictionary<int, ProductData> Products;
+
+    public MachineStatus Status { get; private set; }
+    public bool IsActive => Status == MachineStatus.Active;
 
     public void SetMachineState(string machineId_, MachineStatus status_, Dictionary<int, ProductData> dicData_)
     {
@@ -25,6 +28,9 @@ public class MachineState : MonoBehaviour
 
         MachineIdText.text = MachineId;
         SetPowerLightColor(Status);
+
+        if (Status == MachineStatus.Inactive)
+            LogMgr.Instance?.AddLog(LogEventType.MachineInActive);
 
         Debug.Log("----------------------");
         foreach (var temp in Products)

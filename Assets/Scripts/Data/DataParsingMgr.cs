@@ -30,7 +30,6 @@ public class DataParsingMgr : MonoBehaviour
 
         productImageMgr?.LoadProductImages(Products);
         machineState.SetMachineState(MachineId, Status, Products);
-        productImageMgr.LoadProductImages(Products);
         machineUiMgr?.SetProductListBtn(Products, productImageMgr.ProductImages, inventory);
     }
 
@@ -66,20 +65,11 @@ public class DataParsingMgr : MonoBehaviour
             if (product == null)
                 continue;
 
+            product.SyncProductDataLow();
             dictionary[product.id] = product;
         }
 
         return dictionary;
     }
 }
-
-[System.Serializable]
-public class ItemsJsonRoot
-{
-    public string machineId;
-    public string status;
-    public string updatedAt;
-    public ProductData[] products;
-}
-
 
